@@ -49,8 +49,8 @@ const LoginForm: React.FC = () => {
 
     const formik = useFormik<LoginFormValues>({
         initialValues: {
-            email: "ben@gmail.com",
-            password: "123456",
+            email: "",
+            password: "",
         },
         validationSchema,
         onSubmit: async (values) => {
@@ -77,7 +77,7 @@ const LoginForm: React.FC = () => {
             onSubmit={formik.handleSubmit}
             className="max-w-md mx-auto my-10 bg-white p-6 rounded-xl shadow-lg space-y-6 border border-gray-200"
         >
-            <h2 className="text-3xl font-semibold text-center text-gray-800">Login</h2>
+            <h2 className="text-3xl font-semibold text-center text-black">Login</h2>
 
             {/* Display messages */}
             {isPending && <AlertMessage type="loading" message="Logging you in..." />}
@@ -89,17 +89,17 @@ const LoginForm: React.FC = () => {
             )}
             {isSuccess && <AlertMessage type="success" message="Login successful" />}
 
-            <p className="text-sm text-center text-gray-500">Login to access your account</p>
+            <p className="text-sm text-center text-black">Login to access your account</p>
 
             {/* Input Field - Email */}
             <div className="relative">
-                <FaEnvelope className="absolute top-3 left-3 text-gray-700" />
+                <FaEnvelope className="absolute top-3 left-3 text-purple-400" />
                 <input
                     id="email"
                     type="email"
                     {...formik.getFieldProps("email")}
                     placeholder="Email"
-                    className="pl-10 pr-4 py-2 w-full rounded-md border border-gray-300 focus:border-blue-500 focus:ring-blue-500 placeholder-gray-600 text-black"
+                    className="pl-10 pr-4 py-2 w-full rounded-md border border-gray-300 focus:border-blue-500 focus:ring-blue-500 placeholder-gray-600 text-black placeholder-purple-400"
                 />
                 {formik.touched.email && formik.errors.email && (
                     <span className="text-xs text-red-500">{formik.errors.email}</span>
@@ -108,13 +108,13 @@ const LoginForm: React.FC = () => {
 
             {/* Input Field - Password */}
             <div className="relative">
-                <FaLock className="absolute top-3 left-3 text-gray-700" />
+                <FaLock className="absolute top-3 left-3 text-purple-400" />
                 <input
                     id="password"
                     type="password"
                     {...formik.getFieldProps("password")}
                     placeholder="Password"
-                    className="pl-10 pr-4 py-2 w-full rounded-md border border-gray-300 focus:border-blue-500 focus:ring-blue-500 placeholder-gray-600 text-black"
+                    className="pl-10 pr-4 py-2 w-full rounded-md border border-gray-300 focus:border-blue-500 focus:ring-blue-500 placeholder-purple-400 "
                 />
                 {formik.touched.password && formik.errors.password && (
                     <span className="text-xs text-red-500">{formik.errors.password}</span>
@@ -124,7 +124,7 @@ const LoginForm: React.FC = () => {
             {/* Submit Button */}
             <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-white-200 via-purple-400 to-purple-900 hover:from-white-600 hover:to-purple-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+                className="w-full bg-gradient-to-r from-gray-700 via-purple-600 to-purple-900 hover:from-purple-400 hover:to-purple-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
             >
                 Login
             </button>
