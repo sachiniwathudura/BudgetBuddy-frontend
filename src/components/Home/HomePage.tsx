@@ -45,7 +45,8 @@ const HeroSection: React.FC = () => {
                     {/* Call to Action Button */}
                     <Link to="/register">
                         <button
-                            className="mt-8 px-6 py-3  text-white-500 font-semibold rounded-lg shadow-md transition duration-300">
+                            className="mt-8 px-6 py-3 text-white font-semibold rounded-lg shadow-md transition duration-300 bg-black border-3 border-[#0c0b0b] hover:bg-white hover:text-purple-900 "
+                        >
                             Get Started
                         </button>
                     </Link>
@@ -53,13 +54,13 @@ const HeroSection: React.FC = () => {
             </div>
 
             {/* How it works */}
-            <div className="py-20 px-4 w-full">
-                <h2 className="text-3xl font-bold text-center text-white-800">
+            <div className="py-20 px-4 w-full bg-black">
+                <h2 className="text-3xl font-bold text-center text-white">
                     How It Works
                 </h2>
-                <div className="mt-10 w-full grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="mt-10 w-full grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
                     {/* Step 1 */}
-                    <div className="flex flex-col items-center text-center">
+                    <div className="flex flex-col items-center text-center text-white">
                         <div className="p-4 rounded-full bg-purple-700 text-white mb-4">
                             <FaSignInAlt className="text-xl"/>
                         </div>
@@ -86,12 +87,12 @@ const HeroSection: React.FC = () => {
             </div>
 
             {/* Testimonials */}
-            <div className="bg-gray-100 py-20 px-4 w-full">
+            <div className="bg- py-20 px-4 w-full">
                 <h2 className="text-3xl font-bold text-center text-gray-800">
                     What Our Users Say
                 </h2>
                 <div className="mt-10 w-full grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="bg-white p-6 rounded-lg shadow-lg">
+                    <div className="bg-white p-6 rounded-lg shadow-lg shadow-purple-300">
                         <FaQuoteLeft className="text-xl text-purple-800"/>
                         <p className="mt-4 text-purple-800 text-[20px]">
                             "This app has revolutionized the way I track my expenses. Highly
@@ -99,7 +100,7 @@ const HeroSection: React.FC = () => {
                         </p>
                         <p className="mt-4 font-bold text-purple-800">- Jane Doe</p>
                     </div>
-                    <div className="bg-white p-6 rounded-lg shadow-lg">
+                    <div className="bg-white p-6 rounded-lg shadow-lg shadow-purple-300">
                         <FaQuoteLeft className="text-xl text-purple-800"/>
                         <p className="mt-4 text-purple-900 text-[20px]">
                             "Finally, a hassle-free way to manage my finances. The insights
@@ -121,7 +122,7 @@ const HeroSection: React.FC = () => {
                     </p>
                     <Link to="/register">
                         <button
-                            className="mt-8 px-6 py-3 bg-white text-purple-300 font-semibold rounded-lg shadow-md hover:bg-gray-100 transition duration-300">
+                            className="mt-8 px-6 py-3 bg-black text-white font-semibold rounded-lg shadow-md hover:bg-gray-100 hover:text-purple-800 transition duration-300">
                             Sign Up For Free
                         </button>
                     </Link>
