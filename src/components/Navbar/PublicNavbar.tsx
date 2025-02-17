@@ -48,14 +48,14 @@ export default function PublicNavbar(): JSX.Element {
                                 <div className="flex-shrink-0">
                                     <Link
                                         to="/register"
-                                        className="relative inline-flex items-center gap-x-1.5 rounded-md bg-purple-600 text-white px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                        className="relative inline-flex items-center gap-x-1.5 rounded-md bg-purple-600 text-white px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                     >
                                         <FaRegUser className="-ml-0.5 h-5 w-5" aria-hidden="true" />
                                         Register
                                     </Link>
                                     <Link
                                         to="/login"
-                                        className="relative ml-2 inline-flex items-center gap-x-1.5 rounded-md bg-purple-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 "
+                                        className="relative ml-2 inline-flex items-center gap-x-1.5 rounded-md bg-purple-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 "
                                     >
                                         <RiLoginCircleLine
                                             className="-ml-0.5 h-5 w-5"
