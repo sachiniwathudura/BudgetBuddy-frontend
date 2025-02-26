@@ -67,7 +67,7 @@ const LoginForm: React.FC = () => {
     useEffect(() => {
         if (isSuccess) {
             setTimeout(() => {
-                navigate("/profile");
+                navigate("/dashboard");
             }, 3000);
         }
     }, [isSuccess, navigate]);
