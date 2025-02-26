@@ -8,21 +8,23 @@ import { useNavigate, useParams } from "react-router-dom";
 import { updateCategoryAPI } from "../../services/category/categoryService";
 import AlertMessage from "../Alert/AlertMessage";
 
-interface UpdateCategoryValues {
-    name: string;
+interface CategoryValues {
     type: "income" | "expense";
+    name: string;
 }
 
 const validationSchema = Yup.object({
     name: Yup.string().required("Category name is required"),
     type: Yup.string()
         .required("Category type is required")
-        .oneOf(["income", "expense"]),
+        .oneOf(["income", "expense"] as const),
 });
 
 const UpdateCategory: React.FC = () => {
     // Params
-    const { id } = useParams<{ id: string }>();
+    // const { id } = useParams<{ id: string }>();
+    const { id } = useParams() as { id: string };
+    console.log(id);
     const navigate = useNavigate();
 
     // Mutation
@@ -31,19 +33,19 @@ const UpdateCategory: React.FC = () => {
         mutationKey: ["update-category"],
     });
 
-    const formik = useFormik<UpdateCategoryValues>({
+    const formik = useFormik<CategoryValues>({
         initialValues: {
-            type: "income",
+            type: "income", // Default value
             name: "",
         },
         validationSchema,
-        onSubmit: async (values) => {
-            try {
-                await mutateAsync({ ...values, id});
-                navigate("/categories");
-            } catch (e) {
-                console.log(e);
-            }
+        onSubmit: (values) => {
+            const data = { ...values, id };
+            mutateAsync(data)
+                .then(() => {
+                    navigate("/categories");
+                })
+                .catch((e) => console.log(e));
         },
     });
 
@@ -53,17 +55,16 @@ const UpdateCategory: React.FC = () => {
             className="max-w-lg mx-auto my-10 bg-white p-6 rounded-lg shadow-lg space-y-6"
         >
             <div className="text-center">
-                <h2 className="text-2xl font-semibold text-gray-800">Update Category</h2>
+                <h2 className="text-2xl font-semibold text-gray-800">
+                    Update Category
+                </h2>
                 <p className="text-gray-600">Fill in the details below.</p>
             </div>
             {/* Display alert message */}
             {isError && (
                 <AlertMessage
                     type="error"
-                    message={
-                        (error as any)?.response?.data?.message ||
-                        "Something happened please try again later"
-                    }
+                    message={(error as any)?.response?.data?.message || "Something went wrong. Please try again."}
                 />
             )}
             {isSuccess && (
@@ -93,6 +94,7 @@ const UpdateCategory: React.FC = () => {
                     <p className="text-red-500 text-xs">{formik.errors.type}</p>
                 )}
             </div>
+
             {/* Category Name */}
             <div className="flex flex-col">
                 <label htmlFor="name" className="text-gray-700 font-medium">
@@ -110,6 +112,7 @@ const UpdateCategory: React.FC = () => {
                     <p className="text-red-500 text-xs italic">{formik.errors.name}</p>
                 )}
             </div>
+
             {/* Submit Button */}
             <button
                 type="submit"
