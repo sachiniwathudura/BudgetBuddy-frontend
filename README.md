@@ -1,50 +1,114 @@
-# React + TypeScript + Vite
+<a href="https://git.io/typing-svg">     
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=50&pause=1000&center=true&vCenter=true&color=800080&width=835&height=70&lines=BudgetBuddy+Frontend" alt="Purple Shadow Frontend" />
+</a>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+**BudgetBuddyr** is a personal expense tracker application built using the MERN stack (MySQL with Prisma, Express, React, Node.js). This project allows users to track their expenses efficiently and analyze their spending patterns.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Frontend Technologies Used
 
-## Expanding the ESLint configuration
+- **React**: JavaScript library for building user interfaces.
+- **TypeScript**: A superset of JavaScript for type safety.
+- **Tailwind CSS**: A utility-first CSS framework for rapidly building custom designs.
+- **Vite**: A fast build tool and development server.
+- **Redux**: State management tool for React applications.
+- **Formik & Yup**: Libraries for handling forms and form validation.
+- **Chart.js**: Library for creating interactive charts to visualize expense data.
+- **React Router**: Routing library for single-page applications.
+- **Axios**: Promise-based HTTP client for making requests to the backend.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Project Setup
 
-- Configure the top-level `parserOptions` property like this:
+### Requirements
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Node.js (>=16.x)
+- npm (>=8.x)
+- MySQL database
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/sachiniwathudura/BudgetBuddy-frontend.git
+
+   ```
+2. Install dependencies:
+ ```bash
+    npm install
+```
+3.To run the development server:
+```bash
+   npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Features
+- Add, edit, and delete expense records.
+- View a summary of expenses in various categories.
+- Interactive charts to visualize spending trends.
+- Responsive design using Tailwind CSS.
+- Form validation with Formik and Yup.
+- State management using Redux.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Dependencies
+- @headlessui/react: UI components for building modern interfaces.
+- @heroicons/react: High-quality icons for your UI.
+-  @reduxjs/toolkit: Efficient and flexible state management with Redux.
+-  axios: HTTP client for making API requests.
+-  chart.js: JavaScript library for creating charts.
+- formik: Library for building forms in React.
+- react-router-dom: Declarative routing for React apps.
+- yup: Schema validation library for JavaScript.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Development Tools
+- Vite: A build tool that focuses on speed and performance.
+- tailwindcss: Utility-first CSS framework for styling the application.
+-  eslint: Linter for ensuring code quality.
+- typescript: TypeScript language for type safety.
+
+## Screenshots
+ <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; text-align: center;">
+  <div style="flex: 1 1 calc(40% - 16px); max-width: calc(40% - 16px);">
+    <h3>Home Page</h3>
+    <img src="src/assets/images/homepage.png" alt="home page" style="width: 80%; height: auto; border: 1px solid #ccc; border-radius: 8px;">
+  </div>
+  <div style="flex: 1 1 calc(40% - 16px); max-width: calc(40% - 16px);">
+    <h3>Register Page</h3>
+    <img src="src/assets/images/signuppage.png" alt="signup" style="width: 80%; height: auto; border: 1px solid #ccc; border-radius: 8px;">
+  </div>
+<div style="flex: 1 1 calc(40% - 16px); max-width: calc(40% - 16px);">
+    <h3>Update Profile Page</h3>
+    <img src="src/assets/images/updateprofilepage.png" alt="update profile" style="width: 80%; height: auto; border: 1px solid #ccc; border-radius: 8px;">
+  </div>
+<div style="flex: 1 1 calc(40% - 16px); max-width: calc(40% - 16px);">
+    <h3>Dashboard</h3>
+    <img src="src/assets/images/dashboard.png" alt="dashboard" style="width: 80%; height: auto; border: 1px solid #ccc; border-radius: 8px;">
+  </div>
+<div style="flex: 1 1 calc(40% - 16px); max-width: calc(40% - 16px);">
+    <h3>Add Transaction page</h3>
+    <img src="src/assets/images/transactionpage.png" alt="add transaction" style="width: 80%; height: auto; border: 1px solid #ccc; border-radius: 8px;">
+  </div>
+</div>
+
+
+### Backend
+
+The backend for this application is built using the MERN stack (MySQL with Prisma, Express, Node.js), and you can find the backend repository here:
+
+[Backend Repository Link](https://github.com/sachiniwathudura/BudgetBuddy-backend.git)
+
+##  License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+## Contact
+
+For inquiries or collaboration:
+- **Author:** [Sachini Madubhashini](https://github.com/sachiniwathudura)
+
+<div align="center">
+    © 2025 All Rights Reserved, Designed By Sachini Madubhashini
+</div>
+
+
+⭐ **Feel free to contribute, star the repo, and explore more!*
