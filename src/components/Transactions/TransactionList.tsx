@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
-import { listTransactionsAPI } from "../../services/transactions/transactionService";
+import { listTransactionsAPI } from "../../services/transactions/transactionService.ts";
 import { listCategoriesAPI } from "../../services/category/categoryService";
 
 interface Transaction {
-    _id: string;
+    id: string;
     type: "income" | "expense";
     amount: number;
     category: {
@@ -130,7 +130,7 @@ const TransactionList: React.FC = () => {
                         <option value="Uncategorized">Uncategorized</option>
                         {categoriesData?.map((category) => {
                             return (
-                                <option key={category?._id} value={category?.name}>
+                                <option key={category?.id} value={category?.name}>
                                     {category?.name}
                                 </option>
                             );
@@ -147,7 +147,7 @@ const TransactionList: React.FC = () => {
                     <ul className="list-disc pl-5 space-y-2">
                         {transactions?.map((transaction) => (
                             <li
-                                key={transaction._id}
+                                key={transaction.id}
                                 className="bg-white p-3 rounded-md shadow border border-gray-200 flex justify-between items-center"
                             >
                                 <div>
@@ -174,13 +174,13 @@ const TransactionList: React.FC = () => {
                                 </div>
                                 <div className="flex space-x-3">
                                     <button
-                                        onClick={() => handleUpdateTransaction(transaction._id)}
+                                        onClick={() => handleUpdateTransaction(transaction.id)}
                                         className="text-blue-500 hover:text-blue-700"
                                     >
                                         <FaEdit />
                                     </button>
                                     <button
-                                        onClick={() => handleDelete(transaction._id)}
+                                        onClick={() => handleDelete(transaction.id)}
                                         className="text-red-500 hover:text-red-700"
                                     >
                                         <FaTrash />
@@ -196,3 +196,4 @@ const TransactionList: React.FC = () => {
 };
 
 export default TransactionList;
+//transaction list

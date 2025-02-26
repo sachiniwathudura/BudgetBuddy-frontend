@@ -52,8 +52,8 @@ const TransactionChart: React.FC = () => {
             {
                 label: "Transactions",
                 data: [totals.income, totals.expense],
-                backgroundColor: ["#36A2EB", "#FF6384"],
-                borderColor: ["#36A2EB", "#FF6384"],
+                backgroundColor: ["#BA68C8", "#F06292"],
+                borderColor: ["#7B1FA2", "#C2185B"],
                 borderWidth: 1,
                 hoverOffset: 4,
             },

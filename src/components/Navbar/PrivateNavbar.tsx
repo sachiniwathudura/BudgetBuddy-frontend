@@ -27,7 +27,7 @@ const PrivateNavbar: React.FC = () => {
                         <div className="flex h-16 justify-start items-center">
                             <div className="flex justify-center flex-row w-full">
                                 <div className="-ml-2 mr-2 flex items-left md:hidden">
-                                    <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                                    <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-600">
                                         <span className="absolute -inset-0.5" />
                                         <span className="sr-only">Open main menu</span>
                                         {open ? (
@@ -38,15 +38,15 @@ const PrivateNavbar: React.FC = () => {
                                     </Disclosure.Button>
                                 </div>
                                 <div className="flex flex-shrink-0 items-center">
-                                    <SiAuthy className="h-8 w-auto text-green-500" />
+                                    <SiAuthy className="h-8 w-auto text-purple-500" />
                                 </div>
                                 <div className="hidden md:ml-6 md:flex md:space-x-8">
-                                    <Link to="/" className="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900">
-                                        MasyncTracker
+                                    <Link to="/" className="inline-flex items-center border-b-2 border-purple-600 px-1 pt-1 text-sm font-medium text-gray-900">
+                                        BudgetBuddy
                                     </Link>
                                 </div>
                                 <div className="hidden md:ml-6 md:flex md:space-x-8">
-                                    {["add-transaction", "add-category", "categories", "profile", "dashboard"].map((route) => (
+                                    {["dashboard","add-category", "add-transaction","categories", "profile",].map((route) => (
                                         <Link
                                             key={route}
                                             to={`/${route}`}
@@ -61,13 +61,13 @@ const PrivateNavbar: React.FC = () => {
                                 <button
                                     onClick={logoutHandler}
                                     type="button"
-                                    className="relative m-2 inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
+                                    className="relative m-2 inline-flex items-center gap-x-1.5 rounded-md bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-500 focus:outline-none focus:ring-3 focus:ring-offset-2 focus:ring-purple-600"
                                 >
                                     <IoLogOutOutline className="h-5 w-5" aria-hidden="true" />
                                     <span>Logout</span>
                                 </button>
                                 <Menu as="div" className="relative ml-1">
-                                    <Menu.Button className="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                    <Menu.Button className="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
                                     </Menu.Button>

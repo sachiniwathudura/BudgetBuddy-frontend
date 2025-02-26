@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -10,20 +9,20 @@ import {
     FaRegCommentDots,
     FaWallet,
 } from "react-icons/fa";
-import { listCategoriesAPI } from "../../services/category/categoryService";
-import { addTransactionAPI } from "../../services/transactions/transactionService";
+import { listCategoriesAPI } from "../../services/category/categoryService.ts";
+import { addTransactionAPI } from "../../services/transactions/transactionService.ts";
 import AlertMessage from "../Alert/AlertMessage";
 
 // Define types for category and form values
 interface Category {
-    _id: string;
+    id: number;
     name: string;
 }
 
 interface TransactionFormValues {
     type: "income" | "expense";
     amount: string;
-    category: string;
+    categoryId: number;
     date: string;
     description: string;
 }
@@ -35,16 +34,14 @@ const validationSchema = Yup.object({
     amount: Yup.number()
         .required("Amount is required")
         .positive("Amount must be positive"),
-    category: Yup.string().required("Category is required"),
+    categoryId: Yup.number().required("Categoryid is required").positive("CategoryId is required"),
     date: Yup.date().required("Date is required"),
     description: Yup.string(),
 });
 
 const TransactionForm: React.FC = () => {
-    // Navigate
     const navigate = useNavigate();
 
-    // Mutation
     const {
         mutateAsync,
         isPending,
@@ -56,12 +53,10 @@ const TransactionForm: React.FC = () => {
         mutationKey: ["add-transaction"],
     });
 
-    // Fetching categories
     const {
         data: categories,
         isError,
         isLoading,
-        isFetched,
         error,
         refetch,
     } = useQuery<Category[], Error>({
@@ -73,17 +68,27 @@ const TransactionForm: React.FC = () => {
         initialValues: {
             type: "",
             amount: "",
-            category: "",
+            categoryId: 0,
             date: "",
             description: "",
         },
         validationSchema,
         onSubmit: (values) => {
-            mutateAsync(values)
+            const payload = {
+                ...values,
+                amount: parseFloat(values.amount), // Convert amount to number
+                date: new Date(values.date).toISOString(), // Ensure proper date format
+                categoryId: parseInt(values.categoryId, 10), // Send categoryId instead of category
+            };
+
+            mutateAsync(payload)
                 .then((data) => {
                     console.log(data);
+                    navigate("/transactions"); // Navigate after success
                 })
-                .catch((e) => console.log(e));
+                .catch((e) => {
+                    console.error("Error:", e.response?.data || e.message);
+                });
         },
     });
 
@@ -99,7 +104,6 @@ const TransactionForm: React.FC = () => {
                 <p className="text-gray-600">Fill in the details below.</p>
             </div>
 
-            {/* Display alert message */}
             {isError && (
                 <AlertMessage
                     type="error"
@@ -119,15 +123,15 @@ const TransactionForm: React.FC = () => {
                     htmlFor="type"
                     className="flex gap-2 items-center text-gray-700 font-medium"
                 >
-                    <FaWallet className="text-blue-500" />
+                    <FaWallet className="text-[#9C27B0]" />
                     <span>Type</span>
                 </label>
                 <select
                     {...formik.getFieldProps("type")}
                     id="type"
-                    className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                    className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50"
                 >
-                    <option value="">Select transaction type</option>
+                    <option value="" className="bg-[#9C27B0] text-white">Select transaction type</option>
                     <option value="income">Income</option>
                     <option value="expense">Expense</option>
                 </select>
@@ -139,7 +143,7 @@ const TransactionForm: React.FC = () => {
             {/* Amount Field */}
             <div className="flex flex-col space-y-1">
                 <label htmlFor="amount" className="text-gray-700 font-medium">
-                    <FaDollarSign className="inline mr-2 text-blue-500" />
+                    <FaDollarSign className="inline mr-2 text-[#9C27B0]" />
                     Amount
                 </label>
                 <input
@@ -147,7 +151,7 @@ const TransactionForm: React.FC = () => {
                     {...formik.getFieldProps("amount")}
                     id="amount"
                     placeholder="Amount"
-                    className="w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                    className="w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50"
                 />
                 {formik.touched.amount && formik.errors.amount && (
                     <p className="text-red-500 text-xs italic">{formik.errors.amount}</p>
@@ -155,73 +159,79 @@ const TransactionForm: React.FC = () => {
             </div>
 
             {/* Category Field */}
-            <div className="flex flex-col space-y-1">
-                <label htmlFor="category" className="text-gray-700 font-medium">
-                    <FaRegCommentDots className="inline mr-2 text-blue-500" />
-                    Category
+            <div className="space-y-2">
+                <label
+                    htmlFor="categoryId"
+                    className="flex gap-2 items-center text-gray-700 font-medium"
+                >
+                    <FaRegCommentDots className="text-[#9C27B0]" />
+                    <span>Category</span>
                 </label>
                 <select
-                    {...formik.getFieldProps("category")}
-                    id="category"
-                    className="w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                    {...formik.getFieldProps("categoryId")}
+                    id="categoryId"
+                    className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50"
                 >
-                    <option value="">Select a category</option>
+                    <option value="" className=" bg-[#9C27B0] text-white">Select category</option>
                     {categories?.map((category) => (
-                        <option key={category._id} value={category.name}>
+                        <option key={category.id} value={category.id}>
                             {category.name}
                         </option>
                     ))}
                 </select>
-                {formik.touched.category && formik.errors.category && (
-                    <p className="text-red-500 text-xs italic">
-                        {formik.errors.category}
-                    </p>
+                {formik.touched.categoryId && formik.errors.categoryId && (
+                    <p className="text-red-500 text-xs">{formik.errors.categoryId}</p>
                 )}
             </div>
 
             {/* Date Field */}
-            <div className="flex flex-col space-y-1">
-                <label htmlFor="date" className="text-gray-700 font-medium">
-                    <FaCalendarAlt className="inline mr-2 text-blue-500" />
-                    Date
+            <div className="space-y-2">
+                <label
+                    htmlFor="date"
+                    className="flex gap-2 items-center text-gray-700 font-medium"
+                >
+                    <FaCalendarAlt className="text-[#9C27B0]" />
+                    <span>Date</span>
                 </label>
                 <input
                     type="date"
                     {...formik.getFieldProps("date")}
                     id="date"
-                    className="w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                    className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50"
                 />
                 {formik.touched.date && formik.errors.date && (
-                    <p className="text-red-500 text-xs italic">{formik.errors.date}</p>
+                    <p className="text-red-500 text-xs">{formik.errors.date}</p>
                 )}
             </div>
 
             {/* Description Field */}
-            <div className="flex flex-col space-y-1">
-                <label htmlFor="description" className="text-gray-700 font-medium">
-                    <FaRegCommentDots className="inline mr-2 text-blue-500" />
-                    Description (Optional)
+            <div className="space-y-2">
+                <label
+                    htmlFor="description"
+                    className="flex gap-2 items-center text-gray-700 font-medium"
+                >
+                    <FaRegCommentDots className="text-[#9C27B0]" />
+                    <span>Description</span>
                 </label>
-                <textarea
+                <input
+                    type="text"
                     {...formik.getFieldProps("description")}
                     id="description"
                     placeholder="Description"
-                    rows={3}
-                    className="w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-                ></textarea>
+                    className="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50"
+                />
                 {formik.touched.description && formik.errors.description && (
-                    <p className="text-red-500 text-xs italic">
-                        {formik.errors.description}
-                    </p>
+                    <p className="text-red-500 text-xs italic">{formik.errors.description}</p>
                 )}
             </div>
 
             {/* Submit Button */}
             <button
                 type="submit"
-                className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors duration-200"
+                className="mt-4 bg-[#9C27B0] hover:bg-[#BA68C8] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors duration-200 transform"
+                disabled={isPending}
             >
-                Submit Transaction
+                {isPending ? "Adding..." : "Add Transaction"}
             </button>
         </form>
     );
