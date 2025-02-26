@@ -2,10 +2,11 @@
   <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=50&pause=1000&center=true&vCenter=true&color=800080&width=835&height=70&lines=BudgetBuddy+Frontend" alt="Purple Shadow Frontend" />
 </a>
 
+## 🌍 About the Project
 
 **BudgetBuddyr** is a personal expense tracker application built using the MERN stack (MySQL with Prisma, Express, React, Node.js). This project allows users to track their expenses efficiently and analyze their spending patterns.
 
-## Frontend Technologies Used
+## 💻 Frontend Technologies Used
 
 - **React**: JavaScript library for building user interfaces.
 - **TypeScript**: A superset of JavaScript for type safety.
@@ -17,7 +18,7 @@
 - **React Router**: Routing library for single-page applications.
 - **Axios**: Promise-based HTTP client for making requests to the backend.
 
-## Project Setup
+## ⚙️ Project Setup
 
 ### Requirements
 
@@ -42,7 +43,7 @@
    npm run dev
 ```
 
-## Features
+## 🚀 Features
 - Add, edit, and delete expense records.
 - View a summary of expenses in various categories.
 - Interactive charts to visualize spending trends.
@@ -50,7 +51,7 @@
 - Form validation with Formik and Yup.
 - State management using Redux.
 
-## Dependencies
+## 📦 Dependencies
 - @headlessui/react: UI components for building modern interfaces.
 - @heroicons/react: High-quality icons for your UI.
 -  @reduxjs/toolkit: Efficient and flexible state management with Redux.
@@ -60,13 +61,13 @@
 - react-router-dom: Declarative routing for React apps.
 - yup: Schema validation library for JavaScript.
 
-## Development Tools
+## 🛠️ Development Tools
 - Vite: A build tool that focuses on speed and performance.
 - tailwindcss: Utility-first CSS framework for styling the application.
 -  eslint: Linter for ensuring code quality.
 - typescript: TypeScript language for type safety.
 
-## Screenshots
+## 📸 Screenshots
  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; text-align: center;">
   <div style="flex: 1 1 calc(40% - 16px); max-width: calc(40% - 16px);">
     <h3>Home Page</h3>
@@ -97,11 +98,11 @@ The backend for this application is built using the MERN stack (MySQL with Prism
 
 [Backend Repository Link](https://github.com/sachiniwathudura/BudgetBuddy-backend.git)
 
-##  License
+## 📝 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 
-## Contact
+## 📧 Contact
 
 For inquiries or collaboration:
 - **Author:** [Sachini Madubhashini](https://github.com/sachiniwathudura)
@@ -111,4 +112,4 @@ For inquiries or collaboration:
 </div>
 
 
-⭐ **Feel free to contribute, star the repo, and explore more!*
+⭐ **Feel free to contribute, star the repo, and explore more!**
