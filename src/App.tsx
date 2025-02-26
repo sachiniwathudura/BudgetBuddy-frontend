@@ -13,6 +13,7 @@ import TransactionForm from "./components/Transactions/TranscationForm.tsx";
 import Dashboard from "./components/Users/Dashboard";
 import UserProfile from "./components/Users/UserProfile";
 import AuthRoute from "./components/Auth/AuthRoute";
+import TransactionsList from "./components/Transactions/TransactionList";
 import { RootState } from "./redux/store/store.ts"; // Adjust the path according to your store file
 
 const App: React.FC = () => {
@@ -55,6 +56,14 @@ const App: React.FC = () => {
                     element={
                         <AuthRoute>
                             <TransactionForm />
+                        </AuthRoute>
+                    }
+                />
+                <Route
+                    path="/transactions"
+                    element={
+                        <AuthRoute>
+                            <TransactionsList /> {/* Ensure this component exists */}
                         </AuthRoute>
                     }
                 />
