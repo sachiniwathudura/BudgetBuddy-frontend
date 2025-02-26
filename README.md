@@ -64,7 +64,7 @@
 ## 🛠️ Development Tools
 - Vite: A build tool that focuses on speed and performance.
 - tailwindcss: Utility-first CSS framework for styling the application.
--  eslint: Linter for ensuring code quality.
+- eslint: Linter for ensuring code quality.
 - typescript: TypeScript language for type safety.
 
 ## 📸 Screenshots
@@ -107,7 +107,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 For inquiries or collaboration:
 - **Author:** [Sachini Madubhashini](https://github.com/sachiniwathudura)
 
-<div align="center">
+<div align="left">
     © 2025 All Rights Reserved, Designed By Sachini Madubhashini
 </div>
 
